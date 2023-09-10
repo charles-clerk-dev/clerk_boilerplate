@@ -62,7 +62,7 @@ export const shadcnPlugin = plugin(
     })
   },
 
-  // Extend the Tailwind theme with "themable" utilities
+  // Extend the Tailwind theme with "themable" utilities ✅
   {
     theme: {
       container: {
