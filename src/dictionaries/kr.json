@@ -1,0 +1,16 @@
+{
+  "navigation": {
+    "home": "홈",
+    "about": "회사 소개"
+  },
+  "page": {
+    "home": {
+      "title": "Next.js i18n에 오신 것을 환영합니다",
+      "description": "Next.js에서의 국제화"
+    },
+    "about": {
+      "title": "회사 정보",
+      "description": "이것은 회사 정보 페이지입니다"
+    }
+  }
+}
