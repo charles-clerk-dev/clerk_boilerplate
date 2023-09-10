@@ -6,7 +6,7 @@ import { shadcnPreset } from "./lib/shadcn/shadcn-preset"
 
 const config = {
   presets: [shadcnPreset],
-  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  content: ["src/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
 }
 
 export default config
