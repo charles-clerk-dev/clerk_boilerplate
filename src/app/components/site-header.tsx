@@ -2,9 +2,9 @@ import Link from "next/link"
 import { Icons } from "@/src/app/components/icons"
 import { MainNav } from "@/src/app/components/main-nav"
 import { ThemeToggle } from "@/src/app/components/theme-toggle"
-import { buttonVariants } from "@/src/app/components/ui/button"
 
 import { siteConfig } from "@/config/site"
+import { buttonVariants } from "@/components/ui/button"
 
 export function SiteHeader() {
   return (
