@@ -3,7 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Locale, i18n } from "@/i18n.config"
 
-import Header from "./components/Header"
+import Header from "./components/Navbar/Navbar"
+import { ThemeProvider } from "./components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,8 +27,10 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-        <Header lang={params.lang} />
-        <main>{children}</main>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header lang={params.lang} />
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )

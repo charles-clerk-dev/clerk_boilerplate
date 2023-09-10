@@ -2,7 +2,8 @@ import Link from "next/link"
 import { Locale } from "@/i18n.config"
 import { getDictionary } from "@/src/lib/dictionary"
 
-import LocaleSwitcher from "./locale-switcher"
+import { ThemeToggle } from "../Header/ThemeToggle"
+import LocaleSwitcher from "../locale-switcher"
 
 export default async function Header({ lang }: { lang: Locale }) {
   const { navigation } = await getDictionary(lang)
@@ -19,6 +20,7 @@ export default async function Header({ lang }: { lang: Locale }) {
           </li>
         </ul>
         <LocaleSwitcher />
+        <ThemeToggle />
       </nav>
     </header>
   )
