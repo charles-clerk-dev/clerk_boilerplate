@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { i18n } from "@/i18n.config"
+import { authMiddleware } from "@clerk/nextjs"
 import { match as matchLocale } from "@formatjs/intl-localematcher"
 import Negotiator from "negotiator"
 
@@ -15,7 +16,7 @@ function getLocale(request: NextRequest): string | undefined {
   return locale
 }
 
-export function middleware(request: NextRequest) {
+const middleware = (request: NextRequest) => {
   const pathname = request.nextUrl.pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
@@ -33,6 +34,22 @@ export function middleware(request: NextRequest) {
   }
 }
 
+export default authMiddleware({
+  beforeAuth: (req) => {
+    // Execute next-intl middleware before Clerk's auth middleware
+    return middleware(req)
+  },
+
+  // Ensure that locale specific sign-in pages are public
+  publicRoutes: ["/", "/en", "/kr", "/:locale/sign-in"],
+})
+
+// Clerk
+// export const config = {
+//   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+// }
+
+// Not from Clerk
 export const config = {
   // Matcher ignoring `/_next/` and `/api/`
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],

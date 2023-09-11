@@ -2,6 +2,7 @@ import "@/styles/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Locale, i18n } from "@/i18n.config"
+import { ClerkProvider } from "@clerk/nextjs"
 
 import Header from "./components/Navbar/Navbar"
 import { ThemeProvider } from "./components/theme-provider"
@@ -26,12 +27,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang}>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header lang={params.lang} />
-          <main>{children}</main>
-        </ThemeProvider>
-      </body>
+      <ClerkProvider>
+        <body className={inter.className}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Header lang={params.lang} />
+            <main>{children}</main>
+          </ThemeProvider>
+        </body>
+      </ClerkProvider>
     </html>
   )
 }
