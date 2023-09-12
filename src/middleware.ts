@@ -41,7 +41,14 @@ export default authMiddleware({
   },
 
   // Ensure that locale specific sign-in pages are public
-  publicRoutes: ["/", "/en", "/kr", "/:locale/sign-in"],
+  publicRoutes: [
+    "/",
+    "/en",
+    "/kr",
+    "/:locale/sign-in",
+    "/:locale/sign-up",
+    // "/en/:locale/sign-in/sso-callback",
+  ],
 })
 
 // Clerk
